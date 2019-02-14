@@ -20,5 +20,9 @@ def index(request):
             result = [int(request.GET['number'])*i for i in range(1,13)]
             context['result'] = result
     return render(request, "multiplication/index.html",context)
+
+def stat(request):
+    context = {'stat_list': Multiplication.objects.all().order_by('number')}
+    return render(request, "multiplication/statistics_multiplication.html",context)
     
     

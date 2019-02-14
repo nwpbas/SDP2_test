@@ -2,20 +2,28 @@
 <html>
 <head>
     <style>
-    table, th, td {
+    table, th, td { 
+        text-align:center;
         border: 1px solid black;    
+    }
+    th, td { 
+        padding : 5px;
     }
     </style>
 </head>
 
 <body>
-<form acton = "{%url 'multiplication:index' %}" method=get>
+<form action = "{%url 'multiplication:input' %}" method=get>
     Number :
     <input type='text' name=number>
-    <input type='submit' value="enter" autofocus>
+    <input type='submit' value="Enter">
+</form>
+<br>
+<form action = "{%url 'multiplication:stat' %}" method=get>
+    <input type='submit' value="Statistics" >
 </form>
 {% if result %}
-    <h1>Multiplication of {{multipliction_obj.number}}</h1>
+    <h1>Multiplication table of {{multipliction_obj.number}}</h1>
     <table >
         <tr>
             <th>Multiplication</th>
@@ -28,6 +36,6 @@
         </tr>
         {% endfor %}
     </table>
-    <p>Count show #{{multipliction_obj.count}} time{{ multipliction_obj.count|pluralize }}</p>
+    <p>Number times showing result : {{multipliction_obj.count}} time{{ multipliction_obj.count|pluralize }}</p>
 {% endif %}
 </body>
