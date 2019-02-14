@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    table, th, td {
+        border: 1px solid black;    
+    }
+    </style>
+</head>
+
+<body>
+<form acton = "{%url 'multiplication:index' %}" method=get>
+    Number :
+    <input type='text' name=number>
+    <input type='submit' value="enter" autofocus>
+</form>
+{% if result %}
+    <h1>Multiplication of {{multipliction_obj.number}}</h1>
+    <table >
+        <tr>
+            <th>Multiplication</th>
+            <th>Result</th>
+        </tr>
+        {% for val in result%}
+        <tr>
+            <td>{{multipliction_obj.number}} X {{forloop.counter}}</td>
+            <td>{{val}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p>Count show #{{multipliction_obj.count}} time{{ multipliction_obj.count|pluralize }}</p>
+{% endif %}
+</body>
